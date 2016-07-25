@@ -1,4 +1,27 @@
-# include "libopencif.h" 
+/*
+ * LibOpenCIF, a library to read the contents of a CIF (Caltech Intermediate
+ * Form) file. The library also includes a finite state machine to validate
+ * the contents, acording to the specifications found in the technical
+ * report 2686, from february 11, 1980.
+ * 
+ * Copyright (C) 2014, Moises Chavez Martinez
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// If you need to change the include path, modify the next line according to your needs.
+# include "libopencif.hh" 
 
 // To search over the contents of individual files, search for the word "FILE:"
 
@@ -61,6 +84,9 @@ void OpenCIF::Command::print ( std::ostream& output_stream )
 
 void OpenCIF::Command::read ( std::istream& input_stream )
 {
+   // Dummy call to prevent a warning when compiling about input_stream not being used.
+   input_stream.gcount ();
+   
    return;
 }
 
@@ -308,7 +334,7 @@ void OpenCIF::PolygonCommand::print ( std::ostream& output_stream )
 {
    output_stream << "P ";
    
-   for ( long int i = 0; i < getPoints ().size (); i++ )
+   for ( unsigned long int i = 0; i < getPoints ().size (); i++ )
    {
       output_stream << getPoints ()[ i ] << " ";
    }
@@ -445,7 +471,7 @@ void OpenCIF::WireCommand::print ( std::ostream& output_stream )
 {
    output_stream << "W " << wire_width << " ";
    
-   for ( long int i = 0; i < command_points.size (); i++ )
+   for ( unsigned long int i = 0; i < command_points.size (); i++ )
    {
       output_stream << command_points.at ( i ) << " ";
    }
@@ -1434,7 +1460,7 @@ void OpenCIF::CallCommand::print ( std::ostream& output_stream )
    output_stream << "C "; // Start of the command
    output_stream << getID () << " "; // ID of the call command.
    
-   for ( int i = 0; i < call_transformations.size (); i++ )
+   for ( unsigned int i = 0; i < call_transformations.size (); i++ )
    {
       output_stream << call_transformations.at ( i ) << " ";
    }
@@ -1528,7 +1554,11 @@ std::ostream& operator<< ( std::ostream& output_stream , OpenCIF::DefinitionEndC
 
 std::istream& operator>> ( std::istream& input_stream , OpenCIF::DefinitionEndCommand& command )
 {
-   // Well.. do nothing...
+   // Dummy call to prevent compilation warnings about command not being used
+   if ( (&command) == 0 )
+   {
+      return ( input_stream );
+   }
    
    return ( input_stream );
 }
@@ -1542,7 +1572,11 @@ std::ostream& operator<< ( std::ostream& output_stream , OpenCIF::DefinitionEndC
 
 std::istream& operator>> ( std::istream& input_stream , OpenCIF::DefinitionEndCommand* command )
 {
-   // Well.. do nothing...
+   // Dummy call to prevent compilation warnings about command not being used
+   if ( command == 0 )
+   {
+      return ( input_stream );
+   }
    
    return ( input_stream );
 }
@@ -1558,7 +1592,9 @@ void OpenCIF::DefinitionEndCommand::print ( std::ostream& output_stream )
 
 void OpenCIF::DefinitionEndCommand::read ( std::istream& input_stream )
 {
-    return;
+   input_stream.gcount ();
+   
+   return;
 }
 
 // FILE: endcommand.cc
@@ -1588,11 +1624,15 @@ unsigned long int OpenCIF::EndCommand::getID ( void ) const
 void OpenCIF::EndCommand::setID ( const unsigned long int& new_id )
 {
    ControlCommand::setID ( new_id );
+   
    return;
 }
 
 std::istream& operator>> ( std::istream& input_stream , OpenCIF::EndCommand& command )
 {
+   // Dummy call to prevent warnings about command not being used
+   command.getID ();
+   
    return ( input_stream );
 }
 
@@ -1605,6 +1645,9 @@ std::ostream& operator<< ( std::ostream& output_stream , OpenCIF::EndCommand& co
 
 std::istream& operator>> ( std::istream& input_stream , OpenCIF::EndCommand* command )
 {
+   // Dummy call to prevent warnings about command not being used
+   command->getID ();
+   
    return ( input_stream );
 }
 
@@ -1624,6 +1667,9 @@ void OpenCIF::EndCommand::print ( std::ostream& output_stream )
 
 void OpenCIF::EndCommand::read ( std::istream& input_stream )
 {
+   // Dummy call to prevent warnings about input_stream not being used
+   input_stream.gcount ();
+   
    return;
 }
 
@@ -1990,9 +2036,9 @@ void OpenCIF::State::reset ( void )
  */
 void OpenCIF::State::addOptions ( const std::string& new_options , const int& exit_state )
 {
-   for ( int i = 0; i < new_options.size (); i++ )
+   for ( unsigned int i = 0; i < new_options.size (); i++ )
    {
-      state_options[ new_options[ i ] ] = exit_state;
+      state_options[ (int)(new_options[ i ]) ] = exit_state;
    }
    
    return;
@@ -2003,7 +2049,7 @@ void OpenCIF::State::addOptions ( const std::string& new_options , const int& ex
  */
 int OpenCIF::State::operator[] ( const char& input_char )
 {
-   return ( state_options[ input_char ] );
+   return ( state_options[ (int)input_char ] );
 }
 
 // FILE: finitestatemachine.cc
@@ -2682,7 +2728,7 @@ OpenCIF::File::File ( void )
  */
 OpenCIF::File::~File ( void )
 {
-   for ( int i = 0; i < file_commands.size (); i++ )
+   for ( unsigned int i = 0; i < file_commands.size (); i++ )
    {
       delete file_commands[ i ];
       file_commands[ i ] = 0;
@@ -2711,6 +2757,17 @@ std::string OpenCIF::File::getPath ( void ) const
 void OpenCIF::File::setCommands ( const std::vector< OpenCIF::Command* >& new_commands )
 {
    file_commands = new_commands;
+   
+   return;
+}
+
+/*
+ * Member function to release the vector of commands.
+ */
+void OpenCIF::File::dropCommands ( void )
+{
+   std::vector< OpenCIF::Command* > temporal_vector;
+   file_commands = temporal_vector;
    
    return;
 }
@@ -2943,7 +3000,7 @@ void OpenCIF::File::convertCommands ( void )
     */
    
    // First, delete and clear the current commands vector
-   for ( int i = 0; i < file_commands.size (); i++ )
+   for ( unsigned int i = 0; i < file_commands.size (); i++ )
    {
       delete file_commands[ i ];
       file_commands[ i ] = 0;
@@ -3096,6 +3153,83 @@ std::string OpenCIF::File::cleanCommand ( std::string command )
 }
 
 /*
+ * This member function takes as argument a string that, maybe, is a CIF command.
+ * 
+ * The operation done is similar to the one performed when loading a CIF file, but
+ * applied directly to a string. The idea is to validate a single string as a service
+ * for the user.
+ */
+bool OpenCIF::File::isCommandValid ( std::string command )
+{
+   /*
+    * The process of validation isn't that complex.
+    * 
+    * I need to create a CIFFSM class instance. Such instance will help me to validate
+    * the command contents. I'll read char by char and feed them to the CIFFSM instance.
+    * The CIFFSM instance will start, by default, in state 1.
+    * 
+    * I'll feed the instance characters until I reach the end of the command or the instance reports
+    * an error (jump state equal to -1). After feeding the characters, if I finish feeding the
+    * command and none error was reported, I will check the current state of the instance.
+    * 
+    * The instance should end in state 91 or 92. If the FSM is in such states, the command is 
+    * correct and the format is supported.
+    * 
+    * If there is a jump to a negative state, the command is invalid.
+    * 
+    * Also, I'm considering an invalid a string like this one:
+    * 
+    * this.is.an.invalid.string
+    * 
+    * Such string, according to the FSM used, is valid, since all of those characters are considered
+    * "Black characters", they are chars used to add spaces between commands.
+    * 
+    * So, what I'm considering a valid command? A string that *has* a valid command. If none valid
+    * command is found, then, even if the FSM says no invalid char is found, I'm going to return
+    * false, since a technically empty string doesn't count as a command.
+    */
+   
+   OpenCIF::CIFFSM* fsm;
+   
+   int jump_state = 1; // By default, start in 1
+   char input_char;
+   bool cif_command_found = false; // Flag to prevent validating strings that are, technically speaking, empty.
+   
+   fsm = new OpenCIF::CIFFSM ();
+   
+   // Iterate over the contents of the string, until the string end is
+   // reached or the FSM reports a problem.
+   
+   for ( unsigned int i = 0; i < command.size () && jump_state != -1; i++ )
+   {
+      input_char = command[ i ];
+      
+      jump_state = fsm->operator[] ( input_char );
+      
+      if ( jump_state > 1 )
+      {
+         cif_command_found = true;
+      }
+   }
+   
+   // String validated. What is the result?
+   if ( jump_state == -1 )
+   {      
+      return ( false );
+   }
+   
+   // If no command found, is considered invalid
+   if ( !cif_command_found )
+   {
+      return ( false );
+   }
+   
+   // Everything Ok. The string is a valid according to the CIF format.
+   
+   return ( true );
+}
+
+/*
  * This member function takes as argument a Definition command and returns it cleaned.
  * 
  * A definition command can be something like this:
@@ -3129,7 +3263,7 @@ std::string OpenCIF::File::cleanDefinitionCommand ( std::string command )
    
    // Remove not-necessary characters
    command[ 0 ] = ' ';
-   for ( int i = 0; i < command.size (); i++ )
+   for ( unsigned int i = 0; i < command.size (); i++ )
    {
       // If the current char is not a 'D', not a digit, not an 'S' and not an 'F'
       if ( !std::isdigit ( command[ i ] ) && !std::isupper ( command[ i ] ) )
@@ -3138,7 +3272,7 @@ std::string OpenCIF::File::cleanDefinitionCommand ( std::string command )
       }
    }
    
-   for ( int i = 1; i < command.size (); i++ )
+   for ( unsigned int i = 1; i < command.size (); i++ )
    {
       if ( std::isdigit ( command[ i ] ) )
       {
@@ -3196,7 +3330,7 @@ std::string OpenCIF::File::cleanCallCommand ( std::string command )
    
    // Remove not-necessary characters
    command[ 0 ] = ' ';
-   for ( int i = 0; i < command.size (); i++ )
+   for ( unsigned int i = 0; i < command.size (); i++ )
    {
       if ( !std::isdigit ( command[ i ] ) && !std::isupper( command[ i ] ) && command[ i ] != '-' )
       {
@@ -3204,7 +3338,7 @@ std::string OpenCIF::File::cleanCallCommand ( std::string command )
       }
    }
    
-   for ( int i = 1; i < command.size (); i++ )
+   for ( unsigned int i = 1; i < command.size (); i++ )
    {
       tmp = command[ i ];
       
@@ -3252,7 +3386,7 @@ std::string OpenCIF::File::cleanLayerCommand ( std::string command )
    
    // Remove not-necessary characters
    command[ 0 ] = ' ';
-   for ( int i = 0; i < command.size (); i++ )
+   for ( unsigned int i = 0; i < command.size (); i++ )
    {
       if ( !std::isupper ( command[ i ] ) && command[ i ] != '_' && ! std::isdigit ( command[ i ] ) )
       {
@@ -3313,7 +3447,7 @@ std::string OpenCIF::File::clearNumericCommand ( std::string command )
    final_command += tmp;
    
    // Remove not-necessary characters
-   for ( int i = 0; i < command.size (); i++ )
+   for ( unsigned int i = 0; i < command.size (); i++ )
    {
       if ( !std::isdigit ( command[ i ] ) && command[ i ] != '-' )
       {
