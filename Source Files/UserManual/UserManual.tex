@@ -586,7 +586,7 @@ In this chapter, the user will learn all the concepts and procedures needed to u
 
 The installation procedure is used only when a static library is needed, and such version is intended to be used only on the GNU/Linux and Apple Mac OS X systems. The library  is not intended to be installed on Microsoft Windows systems, since in such systems the library must be used as a two-file part of the user projects (see section \ref{Compiling-On-Windows} to learn how to compile a project using the library).
 
-These installation steps are intended to be used with the source version of the library. If the user already have a pre-compiled version (as static or dynamic library), follow its specific steps to install the library.
+These installation steps are intended to be used with the source version of the library. If the user already have a pre-compiled version (as static or dynamic library), follow its specific steps to install the library. To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}.
 
 To being able to install the library, the user need to have some components before starting.
 
@@ -796,7 +796,7 @@ In the next sub-sections, the user will learn how to compile an example program 
 \subsection{Microsoft Windows}\label{Compiling-On-Windows}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-For Microsoft Windows systems, the compilation can be done only in one way\footnote{The library is not intended to be pre-compiled on Microsoft Windows systems. If the user finds a guide on how to pre-compile the library into, for example, a DLL file, then the user will be the only responsible of the success of such alternatives. The author will not provide support on non-official compilation methods.}: Using the two file version of the library.
+For Microsoft Windows systems, the compilation can be done only in one way\footnote{The library is not intended to be pre-compiled on Microsoft Windows systems. If the user finds a guide on how to pre-compile the library into, for example, a DLL file, then the user will be the only responsible of the success of such alternatives. The author will not provide support on non-official compilation methods.}: Using the two file version of the library. To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}.
 
 To get access to the two-file version of the library, the user can download the regular source package of the library found in SourceForge or GitHub (see section \ref{Installing-The-Library} to find the URLs on which the package can be found). The downloaded file must be named \textbf{\texttt{libopencif-X.Y.Z.tar.gz}}, where \textbf{\texttt{X}}, \textbf{\texttt{Y}} and \textbf{\texttt{Z}} are the major, minor and patch version numbers of the package. Is recommended to always download the latest version of the library.
 
@@ -857,7 +857,7 @@ If the output of the command is as expected, then, the compilation process was d
 \subsection{GNU/Linux}\label{GNU-Linux}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In GNU/Linux, the user has two options to include the library into his project. The first option is using the static library after installing it in the system. The second option is using the two-file version of the library.
+In GNU/Linux, the user has two options to include the library into his project. The first option is using the static library after installing it in the system. The second option is using the two-file version of the library. To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}.
 
 \IconNote
 	{info}
@@ -971,7 +971,7 @@ $
 \subsection{Mac OS X}\label{Mac-OS-X}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Mac OS X: This is a test.
+For Mac OS X, the user can refer to the guide of how to install and use the library in GNU/Linux (the Apple's system isn't that different from GNU/Linux, so the same instructions apply). To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The loading of a file}\label{The-loading-of-a-file}
@@ -2098,7 +2098,7 @@ The State class represents a single state in a whole Finite State Machine (FSM).
 	
 	\hline
 	
-	\texttt{void reset (void)} & Assigns the value -1 to all the positions of \textbf{state\_options}. The value -1 represents a jump to an error state. \\
+	\texttt{void reset (void)} & Assigns the value -1 to all the valid positions of the attribute \textbf{state\_options}. The value -1 represents, in this case, a jump to an error state. \\
 	
 	\hline 
 	
@@ -4015,153 +4015,137 @@ For the GNU/Linux systems, the library was tested both as a two-file part of a p
 
 % Total: 15.5
 {\footnotesize
-\begin{longtable}{| >{\bfseries}p{3cm} | p{2cm} | p{1cm} | p{2cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} |}
+\begin{longtable}{| >{\bfseries}p{3cm} | p{2cm} | p{1cm} | p{2cm} | p{1.2cm} | p{1cm} | p{1cm} | p{1cm} | p{1.5cm} |}
 	\hline
 	
-	\texttt{System}                               & Version                        & Arch   & Update date & CMake & GCC   & Works & Notes \\
+	\texttt{System}                               & Version                        & Arch   & Update date & CMake  & GCC   & Make  & Works & Notes \\
 	
 	\hline
 	\hline
 	
-	\multirow{2}{*}{\texttt{Arch Linux}}          & \multirow{2}{*}{2016.05.01}    & i586   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{2}{*}{\texttt{Arch Linux}}          & \multirow{2}{*}{2016.05.01}    & x86    & 2016/08/06  & 3.6.1    & 6.1.1 & 4.2.1 & Yes   &  \\
 											    							       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x64    & 2016/08/06  & 3.6.1    & 6.1.1 & 4.2.1 & Yes   &  \\
 	                                             
 	\hline
-	
-	\texttt{Bio-Linux}                            & 8                              & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\	
-	
 	\hline
 	
-	\texttt{CAELinux}                             & 2013                           & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\	
-	
-	\hline
-	
-	\multirow{6}{*}{\texttt{CentOS}}              & \multirow{2}{*}{7}             & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{6}{*}{\texttt{CentOS}}              & \multirow{2}{*}{7}             & i386   & 2016/08/06  & 2.8.11   & 4.8.5 & 3.82  & Yes   &  \\
 																		           \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 2.8.11   & 4.8.5 & 3.82  & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{6.7}           & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{6.7}           & i386   & 2016/08/06  & 2.8.12.2 & 4.4.7 & 3.81  & Yes   &  \\
 	                                         							           \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 2.8.12.2 & 4.4.7 & 3.81  & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{5.11}          & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{5.11}          & i386   & 2016/08/06  & 2.6      & 4.1.2 & 3.81  & Yes   &  \\
 	                                         							           \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 2.6      & 4.1.2 & 3.81  & Yes   &  \\
 	                                             
 	\hline
-	
-	\texttt{Chakra}                               & 2016.02 "Ian"                  & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\	
-	
 	\hline
 	
-	\multirow{4}{*}{\texttt{Debian}}              & \multirow{2}{*}{8.4.0}         & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\texttt{Chakra}                               & 2016.02 "Ian"                  & x86\_64& 2016/08/06  & 3.5.1    & 5.2.0 & 4.1   & Yes   &  \\	
+	
+	\hline
+	\hline
+	
+	\multirow{4}{*}{\texttt{Debian}}              & \multirow{2}{*}{8.4.0}         & i386   & 2016/08/06  & 3.0.2    & 4.9.2 & 4.0   & Yes   &  \\
 											    							       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & amd64  & 2016/08/06  & 3.0.2    & 4.9.2 & 4.0   & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{7.9.0}         & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{7.9.0}         & i386   & 2016/08/06  & 2.8.9    & 4.7.2 & 3.81  & Yes   &  \\
 	                                            							       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & amd64  & 2016/08/06  & 2.8.9    & 4.7.2 & 3.81  & Yes   &  \\
 	
 	\hline
+	\hline
 	
-	\multirow{2}{*}{\texttt{elementary OS}}       & \multirow{2}{*}{0.3.2 "Freya"} & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{2}{*}{\texttt{elementary OS}}       & \multirow{2}{*}{0.3.2 "Freya"} & i686   & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 											    							       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 	                                             
 	\hline
-	
-	\multirow{2}{*}{\texttt{Fedora Security Lab}} & \multirow{2}{*}{24}            & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-											    							       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	
 	\hline
 	
-	\multirow{2}{*}{\texttt{Fedora Scientific}}   & \multirow{2}{*}{24}            & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-											    							       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	
-	\hline
-	
-	\multirow{4}{*}{\texttt{Fedora Workstation}}  & \multirow{2}{*}{23}            & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{4}{*}{\texttt{Fedora Workstation}}  & \multirow{2}{*}{24}            & i686   & 2016/08/06  & 3.5.2    & 6.1.1 & 4.1   & Yes   &  \\
 												    						       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 3.5.2    & 6.1.1 & 4.1   & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{22}            & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{23}            & i686   & 2016/08/06  & 3.4.3    & 5.3.1 & 4.0   & Yes   &  \\
 	                                              							       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 3.4.3    & 5.3.1 & 4.0   & Yes   &  \\
+	                                              \cline{2-8}
+	                                              & \multirow{2}{*}{22}            & i686   & 2016/08/06  & 3.3.2    & 5.3.1 & 4.0   & Yes   &  \\
+	                                              							       \cline{3-8}
+	                                              &                                & x86\_64& 2016/08/06  & 3.3.2    & 5.3.1 & 4.0   & Yes   &  \\
 
 	\hline	
+	\hline
 	
-	\multirow{4}{*}{\texttt{Linux Mint}}          & \multirow{2}{*}{17.3}          & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{2}{*}{\texttt{Linux Mint}}          & \multirow{2}{*}{17.3}          & i386   & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 												     						       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{13 LTS}        & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                            							       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & amd64  & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 
 	\hline
-	
-	\multirow{2}{*}{\texttt{Mageia}}              & \multirow{2}{*}{5}             & i586   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-											    							       \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-
 	\hline
 	
-	\multirow{2}{*}{\texttt{Manjaro}}             & \multirow{2}{*}{15.12}         & i686   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{2}{*}{\texttt{Manjaro}}             & \multirow{2}{*}{15.12}         & i686   & 2016/08/06  & 3.6.1    & 6.1.1 & 4.2.1 & Yes   &  \\
 											    							       \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x86\_64& 2016/08/06  & 3.6.1    & 6.1.1 & 4.2.1 & Yes   &  \\
 
+	\hline
 	\hline
 	                                         
-	\texttt{Open SUSE}                            & 8.4.0                          & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\texttt{Open SUSE}                            & 8.4.0                          & x86\_64& 2016/08/06  & 3.3.2    & 4.8.5 & 4.0   & Yes   &  \\
 	  
 	\hline
-	
-	\texttt{Poseidon Linux}                       & 7                              & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\		
-	
 	\hline
 	
-	\multirow{6}{*}{\texttt{Scientific Linux}}    & 7                              & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{6}             & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                         							           \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                              \cline{2-8} 
-	                                              & \multirow{2}{*}{5}             & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
-	                                         							           \cline{3-8}
-	                                              &                                & x86\_64& DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\	
-	
-	\hline
-	
-	\multirow{6}{*}{\texttt{Ubuntu Desktop}}      & \multirow{2}{*}{16.04 LTS}     & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{6}{*}{\texttt{Ubuntu Desktop}}      & \multirow{2}{*}{16.04 LTS}     & i386   & 2016/08/06  & 3.5.1    & 5.4.0 & 4.1   & Yes   &  \\
 																		           \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & amd64  & 2016/08/06  & 3.5.1    & 5.4.0 & 4.1   & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{14.04 LTS}     & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{14.04 LTS}     & i386   & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 	                                         							           \cline{3-8}
-	                                              &                                & amd64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & amd64  & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{12.04 LTS}     & i386   & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{12.04 LTS}     & i386   & 2016/08/06  & 2.8.7    & 4.6.3 & 3.81  & Yes   &  \\
 	                                         							           \cline{3-8}
-	                                              &                                & and64  & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & and64  & 2016/08/06  & 2.8.7    & 4.6.3 & 3.81  & Yes   &  \\
 	                                             
 	\hline
+	\hline
 	
-	\multirow{4}{*}{\texttt{Zorin OS Core}}       & \multirow{2}{*}{11}            & x32    & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	\multirow{4}{*}{\texttt{Zorin OS Core}}       & \multirow{2}{*}{11}            & x32    & 2016/08/06  & 3.2.2    & 5.2.1 & 4.0   & Yes   &  \\
 																		           \cline{3-8}
-	                                              &                                & x64    & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x64    & 2016/08/06  & 3.2.2    & 5.2.1 & 4.0   & Yes   &  \\
 	                                              \cline{2-8}
-	                                              & \multirow{2}{*}{9 LTS}         & x32    & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              & \multirow{2}{*}{9 LTS}         & x32    & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
 	                                         	 						           \cline{3-8}
-	                                              &                                & x64    & DUMMY       & DUMMY & DUMMY & DUMMY & DUMMY \\
+	                                              &                                & x64    & 2016/08/06  & 2.8.12.2 & 4.8.4 & 3.81  & Yes   &  \\
+	\hline
+	\hline
+	                        
+	\multirow{2}{*}{\texttt{Microsoft Windows}}   & 11                             & Both   & 2016/08/06  &          & 4.9.3 &       & Yes   & See Note 1 \\
+
+	                                              \cline{2-8}
+	                                              & 7                              & Both   & 2016/08/06  &          & 4.9.3 &       & Yes   & See Note 1 \\
+	                                              
+	\hline
+	
+	\texttt{Apple Mac OS X}                       & DUMMY                          & DUMMY  & 2016/08/06  & DUMMY    & DUMMY & DUMMY & DUMMY &  \\
 	
 	\hline
 \caption{Compatibility list for LibOpenCIF.}
 \label{tab:Compatibility-list-for-LibOpenCIF}
 \end{longtable}
 }
+
+\IconNote
+	{warning}
+	{Note 1: Compiling on Microsoft Windows}
+	{Using MingW 0.6.2 20131004, if strict options are selected (\texttt{-Wall}, \texttt{-Werror}, \texttt{-Wextra}, \texttt{-ansi} or \texttt{-pedantic}), G++ detects its own sources as non valid (they have errors according to G++ itself). Such errors are not related to LibOpenCIF.}
 
 \cleartoverso
 

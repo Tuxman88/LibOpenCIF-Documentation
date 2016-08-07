@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.4.3)  17 JUL 2016 23:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.4.3)  7 AUG 2016 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1577,13 +1577,8 @@ File: images/chapter03-image09.png Graphic file (type png)
 <use images/chapter03-image09.png>
 Package pdftex.def Info: images/chapter03-image09.png used on input line 2070.
 (pdftex.def)             Requested size: 299.27751pt x 72.83553pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2101--2102
-[]|\OT1/lmr/m/n/9 Assigns the value -1 to all the po-si-tions of
- []
-
-[55 <./images/chapter03-image09.png (PNG copy)>]
-<images/chapter03-image10.png, id=251, 588.0794pt x 245.85971pt>
+ [55 <./images/chapter03-image09.png (PNG copy)>] <images/chapter03-image10.png
+, id=251, 588.0794pt x 245.85971pt>
 File: images/chapter03-image10.png Graphic file (type png)
 
 <use images/chapter03-image10.png>
@@ -2265,33 +2260,57 @@ Package pdftex.def Info: images/chapter03-cover.jpg used on input line 4008.
  [98
 
 ]
-Overfull \hbox (4.41656pt too wide) in paragraph at lines 4074--4074
-[]|[]| 
+Overfull \hbox (4.80252pt too wide) in alignment at lines 4018--4078
+ [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.93845pt too wide) in alignment at lines 4018--4077
- [] [] [] [] [] [] [] [] 
+Underfull \vbox (badness 10000) detected at line 4078
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4077
+Overfull \hbox (9.44019pt too wide) in paragraph at lines 4137--4137
+[]|\OT1/lmr/m/n/9 DUMMY| 
  []
 
 
-Overfull \hbox (0.93845pt too wide) in alignment at lines 4077--4133
- [] [] [] [] [] [] [] [] 
+Overfull \hbox (3.74971pt too wide) in paragraph at lines 4137--4137
+[]|\OT1/lmr/m/n/9 DUMMY| 
  []
 
 
-Overfull \hbox (0.93845pt too wide) in alignment at lines 4133--4163
- [] [] [] [] [] [] [] [] 
+Overfull \hbox (9.44019pt too wide) in paragraph at lines 4137--4137
+[]|\OT1/lmr/m/n/9 DUMMY| 
  []
 
-[99]
+
+Overfull \hbox (9.44019pt too wide) in paragraph at lines 4137--4137
+[]|\OT1/lmr/m/n/9 DUMMY| 
+ []
+
+
+Overfull \hbox (9.44019pt too wide) in paragraph at lines 4137--4137
+[]|\OT1/lmr/m/n/9 DUMMY| 
+ []
+
+
+Overfull \hbox (4.80252pt too wide) in alignment at lines 4078--4138
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (4.80252pt too wide) in alignment at lines 4138--4142
+ [] [] [] [] [] [] [] [] [] 
+ []
+
+File: images/icon-warning.png Graphic file (type png)
+<use images/icon-warning.png>
+Package pdftex.def Info: images/icon-warning.png used on input line 4148.
+(pdftex.def)             Requested size: 28.44997pt x 28.44997pt.
+ [99]
 \GPT@outputbox=\box69
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 4192.
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 4176.
 
  [100
 
@@ -2303,7 +2322,7 @@ LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <10.95> not available
 Here is how much of TeX's memory you used:
  21366 strings out of 494977
  407999 string characters out of 6180184
- 733241 words of memory out of 5000000
+ 733257 words of memory out of 5000000
  24105 multiletter control sequences out of 15000+600000
  87430 words of font info for 59 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -2325,7 +2344,7 @@ onts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10
 type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/
 public/lm/lmtti10.pfb>
-Output written on UserManual.pdf (104 pages, 12741988 bytes).
+Output written on UserManual.pdf (104 pages, 12742387 bytes).
 PDF statistics:
  546 PDF objects out of 1000 (max. 8388607)
  336 compressed objects within 4 object streams
