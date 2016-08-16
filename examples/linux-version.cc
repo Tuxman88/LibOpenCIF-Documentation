@@ -34,7 +34,7 @@
 # include <string>
 
 // Import the library header
-# include "opencif/opencif.h"
+# include <opencif>
 
 using namespace std;
 
@@ -84,7 +84,7 @@ int main ()
       vector< string > commands;
       commands = file.getRawCommands ();
       
-      for ( int i = 0; i < commands.size (); i++ )
+      for ( unsigned int i = 0; i < commands.size (); i++ )
       {
          cout << commands[ i ] << endl;
       }

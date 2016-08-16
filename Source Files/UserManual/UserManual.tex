@@ -971,7 +971,7 @@ $
 \subsection{Mac OS X}\label{Mac-OS-X}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For Mac OS X, the user can refer to the guide of how to install and use the library in GNU/Linux (the Apple's system isn't that different from GNU/Linux, so the same instructions apply). To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}.
+For Mac OS X, the user can refer to the guide of how to install and use the library in GNU/Linux (the Apple's system isn't that different from GNU/Linux, so the same instructions apply). To see the full \textbf{table of officially supported systems}, check the table \ref{tab:Compatibility-list-for-LibOpenCIF}, found in page \pageref{tab:Compatibility-list-for-LibOpenCIF}, which specifies one consideration about the installation and usage of the library.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The loading of a file}\label{The-loading-of-a-file}
@@ -4015,7 +4015,7 @@ For the GNU/Linux systems, the library was tested both as a two-file part of a p
 
 % Total: 15.5
 {\footnotesize
-\begin{longtable}{| >{\bfseries}p{3cm} | p{2cm} | p{1cm} | p{2cm} | p{1.2cm} | p{1cm} | p{1cm} | p{1cm} | p{1.5cm} |}
+\begin{longtable}{| >{\bfseries}p{3cm} | p{2.6cm} | p{1cm} | p{1.5cm} | p{1cm} | p{0.7cm} | p{0.7cm} | p{0.8cm} | p{1.5cm} |}
 	\hline
 	
 	\texttt{System}                               & Version                        & Arch   & Update date & CMake  & GCC   & Make  & Works & Notes \\
@@ -4134,7 +4134,7 @@ For the GNU/Linux systems, the library was tested both as a two-file part of a p
 	                                              
 	\hline
 	
-	\texttt{Apple Mac OS X}                       & DUMMY                          & DUMMY  & 2016/08/06  & DUMMY    & DUMMY & DUMMY & DUMMY &  \\
+	\texttt{Apple macOS X}                        & 10.11.6 El Capitan             & x64    & 2016/08/06  & 3.6.1    & 4.2.1 & 3.81  & Yes & See Note 2 \\
 	
 	\hline
 \caption{Compatibility list for LibOpenCIF.}
@@ -4146,6 +4146,12 @@ For the GNU/Linux systems, the library was tested both as a two-file part of a p
 	{warning}
 	{Note 1: Compiling on Microsoft Windows}
 	{Using MingW 0.6.2 20131004, if strict options are selected (\texttt{-Wall}, \texttt{-Werror}, \texttt{-Wextra}, \texttt{-ansi} or \texttt{-pedantic}), G++ detects its own sources as non valid (they have errors according to G++ itself). Such errors are not related to LibOpenCIF.}
+
+\IconNote
+	{warning}
+	{Note 2: Compiling on Apple macOS}
+	{The two file version of the library works without problems. The installed version, once installed (following the Linux steps), requires from the user to set the search paths of the header and library files in G++ when compiling (G++ doesn't search by defualt for headers nor library files in the paths used by CMake during installation). Such errors are not related to LibOpenCIF, but is recommended to use the two file version of the library.}
+
 
 \cleartoverso
 
